@@ -5,7 +5,7 @@ from collections import namedtuple, deque
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 class ReplayBuffer:
-    def __init__(self, buffer_size, batch_size, seed):
+    def __init__(self, buffer_size, batch_size):
         self.memory = deque(maxlen=buffer_size)
         self.batch_size = batch_size
         self.experience = namedtuple("Experience", field_names=["state", "action", "reward", "next_state", "done"])
