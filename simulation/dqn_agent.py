@@ -5,6 +5,8 @@ import torch.optim as optim
 from model import Model
 from replay_buffer import ReplayBuffer
 
+
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 class DQNAgent:
     def __init__(self, 
                 state_size: int,
@@ -13,7 +15,7 @@ class DQNAgent:
                 batch_size: int = 64, 
                 gamma = 0.9, 
                 epsilon_min = 0.1, 
-                epsilon_decay = 0.9, 
+                epsilon_decay = 0.99, 
                 learning_rate = 5e-4):
 
         self.state_size = state_size
@@ -33,18 +35,19 @@ class DQNAgent:
         self.loss = torch.nn.MSELoss()
 
     def build_model(self):
-        self.model = Model(self.state_size, 24, self.action_size)
+        self.model = Model(self.state_size, 24, self.action_size).to(device)
 
     def step(self, state, action, reward, next_state, done):
         self.memory.add(state, action, reward, next_state, done)
-
         if len(self.memory) > self.batch_size:
+            print("learning", len(self.memory))
             self.learn()
+            self.before_episode()
     
     def act(self, state, mode='train'):
         if np.random.rand() <= self.epsilon and mode == 'train':
             return np.random.randint(self.action_size)
-        return np.argmax(self.model(state))
+        return np.argmax(self.model(state).detach().cpu().numpy())
         
     def before_episode(self):
         self.epsilon = max(self.epsilon_min, self.epsilon_decay * self.epsilon)
