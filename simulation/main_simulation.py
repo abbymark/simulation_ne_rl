@@ -5,13 +5,21 @@ import random
 from units import Unit
 from foods import Food
 
+
+# CURRENT: Unit is barely moving and no episodes. Also there is a penalty for going out of bounds.
+# This has to be fixed.
+# TODO: Make traing episodes
+# TODO: Normalize the state
+
+
+
 # constants
 BACKGROUND_COLOR = (0, 0, 0)
 WINDOW_WIDTH = 1000
 WINDOW_HEIGHT = 600
 FRAME_RATE = 30
 
-FOOD_COUNT = 30
+FOOD_COUNT = 50
 
 pygame.init()
 window = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
