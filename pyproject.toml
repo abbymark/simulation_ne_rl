@@ -19,7 +19,7 @@ deap = "^1.3.3"
 numpy = "^1.24.1"
 scipy = "^1.9"
 wandb = "^0.13.11"
-gymnasium = {extras = ["accept-rom-license"], version = "^0.28.0"}
+gymnasium = {extras = ["accept-rom-license", "atari"], version = "^0.28.0"}
 opencv-python = "^4.7.0.72"
 
 
