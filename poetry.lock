@@ -806,6 +806,28 @@ files = [
 test = ["enum34", "ipaddress", "mock", "pywin32", "wmi"]
 
 [[package]]
+name = "ptan"
+version = "0.7"
+description = ""
+category = "main"
+optional = false
+python-versions = "*"
+files = []
+develop = false
+
+[package.dependencies]
+gymnasium = "*"
+numpy = "*"
+opencv-python = "*"
+torch = ">=1.7.0"
+
+[package.source]
+type = "git"
+url = "https://github.com/abbymark/gymnasium_compatible_ptan.git"
+reference = "HEAD"
+resolved_reference = "87ce9a53ce30338a9049d5da66bdeab38078beac"
+
+[[package]]
 name = "pygame"
 version = "2.1.2"
 description = "Python Game Development"
@@ -1380,4 +1402,4 @@ test = ["pytest (>=3.0.0)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "7d6fbadc4c7ae338c6cf3390a4937d0db051b315c4bbadda4417d9a68306ed68"
+content-hash = "b9a5af2b85e95610b3a32365078aae52bb83cbfa61e6f862f98e26563b50f64d"

@@ -21,6 +21,7 @@ scipy = "^1.9"
 wandb = "^0.13.11"
 gymnasium = {extras = ["accept-rom-license", "atari"], version = "^0.28.0"}
 opencv-python = "^4.7.0.72"
+ptan = {git = "https://github.com/abbymark/gymnasium_compatible_ptan.git"}
 
 
 [tool.poetry.group.dev.dependencies]
