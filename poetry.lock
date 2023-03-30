@@ -685,7 +685,7 @@ numpy = [
 name = "packaging"
 version = "23.0"
 description = "Core utilities for Python packages"
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=3.7"
 files = [
@@ -918,6 +918,22 @@ tomli = {version = ">=1.0.0", markers = "python_version < \"3.11\""}
 
 [package.extras]
 testing = ["argcomplete", "hypothesis (>=3.56)", "mock", "nose", "pygments (>=2.7.2)", "requests", "xmlschema"]
+
+[[package]]
+name = "pytorch-ignite"
+version = "0.4.11"
+description = "A lightweight library to help with training neural networks in PyTorch."
+category = "main"
+optional = false
+python-versions = "*"
+files = [
+    {file = "pytorch-ignite-0.4.11.tar.gz", hash = "sha256:ee31096a58679417097ef7f3f27d88bec40b789ac5e13cd9ed08bc89ca8ce2e2"},
+    {file = "pytorch_ignite-0.4.11-py3-none-any.whl", hash = "sha256:5a39b17c5288fd82374ac0c8f8c40ab5169891d314d76dd43ea89b15c5c67bf0"},
+]
+
+[package.dependencies]
+packaging = "*"
+torch = ">=1.3,<3"
 
 [[package]]
 name = "pyyaml"
@@ -1402,4 +1418,4 @@ test = ["pytest (>=3.0.0)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "b9a5af2b85e95610b3a32365078aae52bb83cbfa61e6f862f98e26563b50f64d"
+content-hash = "51a3fe3f5fe3e9662383d6654cf9269348900b14020a122f46a82320fbc1cfa3"
