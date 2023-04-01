@@ -108,7 +108,7 @@ def setup_ignite(engine: Engine, params: SimpleNamespace, exp_source, run_name:s
     
     now = datetime.now().isoformat(timespec='minutes')
     logdir = f"runs/{now}-{params.run_name}-{run_name}"
-    wb = wandb_logger.WandbLogger(project="simulation_ne_rl", name=logdir)
+    wb = wandb_logger.WandBLogger(project="simulation_ne_rl", name=logdir)
     run_avg = RunningAverage(output_transform=lambda v: v['loss'])
     run_avg.attach(engine, 'avg_loss')
 
