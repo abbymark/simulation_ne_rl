@@ -112,9 +112,9 @@ def setup_ignite(engine: Engine, params: SimpleNamespace, exp_source, run_name:s
     run_avg = RunningAverage(output_transform=lambda v: v['loss'])
     run_avg.attach(engine, 'avg_loss')
 
-    metrics = ["reward", "steps", "avg_reward"]
+    metrics_episode = ["reward", "steps", "avg_reward"]
     handler = wandb_logger.OutputHandler(
-        tag="episodes", metric_names=metrics
+        tag="episodes", metric_names=metrics_episode
     )
     event = ptan_ignite.EpisodeEvents.EPISODE_COMPLETED
     wb.attach(engine, log_handler=handler, event_name=event)
@@ -122,6 +122,7 @@ def setup_ignite(engine: Engine, params: SimpleNamespace, exp_source, run_name:s
     # write to wandb every 100 iterations
     ptan_ignite.PeriodicEvents().attach(engine)
     metrics = ['avg_loss', 'avg_fps']
+    metrics.extend(metrics_episode)
     metrics.extend(extra_metrics)
     handler = wandb_logger.OutputHandler(
         tag="train", metric_names=metrics, output_transform=lambda a: a
